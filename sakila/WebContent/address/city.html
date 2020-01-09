@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<title>사킬라 - 필름 리스트</title>
+	
+	<!-- Custom fonts for this template-->
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+		type="text/css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+	
+	
+	<link href="../css/sb-admin-2.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+	<div id="aside">
+		<!-- aside.html -->
+	</div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+		
+		<h1>City 관리</h1>
+		<div class="row">
+			<div class="col-4">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Country 추가</font></font></h6>
+					</div>
+					<div class="card-body">
+						<h2></h2>
+						<div>
+							<div class="form-group">
+								country : <input class="form-control" id="country">
+							</div>
+							<div>
+								<button type="button" class="btn btn-success" id= "addCountry">추가</button>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">City 추가</font></font></h6>
+					</div>
+					<div class="card-body">
+						<div class = "dan">
+							<div >
+								<select id="selectBox" class="form-control" size = "10">
+								</select>
+							</div>
+							<div>
+								<table>
+									<tr>
+										<td>country id : </td>
+										<td><input type ="text" id = "countryId" class="form-control" readonly="readonly"></td>
+									</tr>
+									<tr>
+										<td>city : </td>
+										<td><input type ="text" class="form-control" id = "city"></td>
+									</tr>
+									
+								</table>
+									<button type = "button" class="btn btn-success" id = "addCity">추가</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-8">
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Country 목록</font></font></h6>
+					</div>
+					<div class="card-body">
+						<table class="table table-boder">
+							<thead>
+								<tr>
+									<th>country_id</th>
+									<th>country</th>
+									<th>last_update</th>
+								</tr>
+							</thead>
+						<tbody id = "list2"></tbody>
+						</table>
+						<button type = "button" class="btn btn-outline-primary" id = "prev2">이전</button>
+						<button type = "button" class="btn btn-outline-primary" id = "next2">다음</button>
+					</div>
+				</div>
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">City 목록</font></font></h6>
+					</div>
+					<div class="card-body">
+						<div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>city_id</th>
+										<th>city</th>
+										<th>country_id</th>
+										<th>last_update</th>
+									</tr>
+								</thead>
+							<tbody id = "list"></tbody>
+							</table>
+						</div>
+						<button type = "button" class="btn btn-outline-primary" id = "prev">이전</button>
+						<button type = "button" class="btn btn-outline-primary" id = "next">다음</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- country -->
+
+		
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../js/demo/datatables-demo.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#aside").load("/sakila/aside.html");
+	
+</script>
+<script type="text/javascript">
+	let currentPage = 1;
+	$("#list").empty();
+	//bd의 city 의 list를 불러온다
+	$.ajax({
+		url : "/sakila/address/selectCityList",
+		method : "POST",
+		data : {"currentPage" : currentPage},
+		success : function(json){
+
+			for(i=0;i<json.length;i+=1){
+				let html = "";
+				html += "<tr><td>"+json[i].cityId+"</td>"
+				+"<td>"+json[i].city+"</td>"
+				+"<td>"+json[i].country.countryId+"</td>"
+				+"<td>"+json[i].lastUpdate+"</td>"
+				+"</tr>";
+				$("#list").append(html);
+			}
+		}
+		
+	});
+	//전체 국가리스트
+	$.ajax({
+		url : "/sakila/address/selectCountryListAll",
+		method : "POST",
+		success : function(json){
+
+			for(i=0;i<json.length;i+=1){
+				let html = "<option value="+json[i].countryId+">"+json[i].country+"</option>";
+				
+				$("#selectBox").append(html);
+			}
+		}
+		
+	});
+	$("#selectBox").change(function(){
+		$("#countryId").val($("#selectBox").val());
+	});
+	
+	$("#addCity").click(function(){
+		if($("#countryId").val()==="" || $("#city").val()===""){
+			return;
+		}
+		$.ajax({
+			url : "/sakila/address/InsertCity",
+			data : {"countryId" : $("#countryId").val(), "city" : $("#city").val()},
+			method : "POST",
+			success : function(){
+				currentPage=1;
+				$("#list").empty();
+				$.ajax({
+					url : "/sakila/address/selectCityList",
+					method : "POST",
+					data : {currentPage : currentPage},
+					success : function(json){
+
+						console.log("석셋스2");
+						for(i=0;i<json.length;i+=1){
+							let html = "";
+							html += "<tr><td>"+json[i].cityId+"</td>"
+							+"<td>"+json[i].city+"</td>"
+							+"<td>"+json[i].country.countryId+"</td>"
+							+"<td>"+json[i].lastUpdate+"</td>"
+							+"</tr>";
+							$("#list").append(html);
+						}
+					}
+					
+				});
+			}
+		});
+	});
+	
+	
+	$("#prev").click(function(){
+		if(currentPage<=1){
+			return;
+		}
+		currentPage -= 1;
+		$("#list").empty();
+		$.ajax({
+			url : "/sakila/address/selectCityList",
+			method : "POST",
+			data : {"currentPage" : currentPage},
+			success : function(json){
+
+				console.log("석셋스2");
+				for(i=0;i<json.length;i+=1){
+					let html = "";
+					html += "<tr><td>"+json[i].cityId+"</td>"
+					+"<td>"+json[i].city+"</td>"
+					+"<td>"+json[i].country.countryId+"</td>"
+					+"<td>"+json[i].lastUpdate+"</td>"
+					+"</tr>";
+					$("#list").append(html);
+				}
+			}
+			
+		});
+	})
+	$("#next").click(function(){
+		let count = 0;
+		$.ajax({
+			url : "/sakila/address/selectCityCount",
+			method : "POST",
+			async : false,
+			success : function(json){
+				count=Number(json);
+			}
+			
+		});
+		let lastPage = (Math.ceil(count/10));
+		console.log(lastPage);
+		if(currentPage === lastPage){
+			return;
+		}
+		currentPage += 1;
+		$("#list").empty();
+		$.ajax({
+			url : "/sakila/address/selectCityList",
+			method : "POST",
+			data : {"currentPage" : currentPage},
+			success : function(json){
+
+				for(i=0;i<json.length;i+=1){
+					let html = "";
+					html += "<tr><td>"+json[i].cityId+"</td>"
+					+"<td>"+json[i].city+"</td>"
+					+"<td>"+json[i].country.countryId+"</td>"
+					+"<td>"+json[i].lastUpdate+"</td>"
+					+"</tr>";
+					$("#list").append(html);
+				}
+			}
+			
+		});
+	});
+
+	let currentPageCountry = 1;
+	$("#list2").empty();
+	
+	$.ajax({
+		url : "/sakila/address/selectCountryList",
+		method : "POST",
+		data : {"currentPage" : currentPageCountry},
+		success : function(json){
+
+			console.log("석셋스2");
+			for(i=0;i<json.length;i+=1){
+				let html = "";
+				html += "<tr><td>"+json[i].countryId+"</td>"
+				+"<td>"+json[i].country+"</td>"
+				+"<td>"+json[i].lastUpdate+"</td>"
+				+"</tr>";
+				$("#list2").append(html);
+			}
+		}
+		
+	});
+	$("#addCountry").click(function(){
+		console.log($("#country").val())
+		$.ajax({
+			url : "/sakila/address/InsertCountry",
+			data : {country : $("#country").val()},
+			method : "POST",
+			success : function(){
+				console.log("석셋스");
+				currentPageCountry=1;
+				$("#list").empty();
+				$.ajax({
+					url : "/sakila/address/selectCountryList",
+					method : "POST",
+					data : {"currentPage" : currentPageCountry},
+					success : function(json){
+
+						console.log("석셋스2");
+						for(i=0;i<json.length;i+=1){
+							let html = "";
+							html += "<tr><td>"+json[i].countryId+"</td>"
+							+"<td>"+json[i].country+"</td>"
+							+"<td>"+json[i].lastUpdate+"</td>"
+							+"</tr>";
+							$("#list").append(html);
+						}
+					}
+					
+				});
+			}
+		});
+	});
+	
+	
+	$("#prev2").click(function(){
+		if(currentPageCountry<=1){
+			return;
+		}
+		currentPageCountry -= 1;
+		$("#list2").empty();
+		$.ajax({
+			url : "/sakila/address/selectCountryList",
+			method : "POST",
+			data : {"currentPage" : currentPageCountry},
+			success : function(json){
+
+				for(i=0;i<json.length;i+=1){
+					let html = "";
+					html += "<tr><td>"+json[i].countryId+"</td>"
+					+"<td>"+json[i].country+"</td>"
+					+"<td>"+json[i].lastUpdate+"</td>"
+					+"</tr>";
+					$("#list2").append(html);
+				}
+			}
+			
+		});
+	})
+	$("#next2").click(function(){
+		let count = 0;
+		$.ajax({
+			url : "/sakila/address/selectCountryCount",
+			method : "POST",
+			async : false,
+			success : function(json){
+				count=Number(json);
+			}
+			
+		});
+		let lastPage = (Math.ceil(count/10));
+		console.log(lastPage);
+		if(currentPageCountry === lastPage){
+			return;
+		}
+		currentPageCountry += 1;
+		$("#list2").empty();
+		$.ajax({
+			url : "/sakila/address/selectCountryList",
+			method : "POST",
+			data : {"currentPage" : currentPageCountry},
+			success : function(json){
+
+				for(i=0;i<json.length;i+=1){
+					let html = "";
+					html += "<tr><td>"+json[i].countryId+"</td>"
+					+"<td>"+json[i].country+"</td>"
+					+"<td>"+json[i].lastUpdate+"</td>"
+					+"</tr>";
+					$("#list2").append(html);
+				}
+			}
+			
+		});
+	})
+	
+	
+</script>
+</html>

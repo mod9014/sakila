@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sakila index</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	body {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		position: relative;
+		overflow-y: auto;
+	}
+	
+	#aside {
+		width: 200px;
+		height: 3000px;
+		position: fixed;
+		background: orange;
+		overflow: hidden;
+		float: left;
+	}
+	
+	#section {
+		margin-left: 300px;
+		margin-right: 100px;
+		margin-bottom: 100px;
+		background: white;
+	}
+</style>
+</head>
+<body>
+	<div id="aside">
+		<!-- aside.html -->
+	</div>
+	<div id="section">
+		
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#aside").load("/sakila/aside.html");
+	
+</script>
+<script type="text/javascript">
+	
+</script>
+</html>
