@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sakila.address.model.Address;
+import sakila.address.model.City;
 import sakila.db.DBHelper;
 
 public class CustomerDAO {
@@ -77,20 +78,58 @@ public class CustomerDAO {
 			stmt.executeUpdate();
 		
 	}
-	
-	public void transactionTest() {
+	public CustomerDetail selectCustormerDetail(int customerId) {
+		CustomerDetail customerDetail = new CustomerDetail();
 		Connection conn = null;
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		PreparedStatement stmt2 = null;
-		String sql = "SELECT COUNT(*) FROM customer";
+		ResultSet rs2 = null;
+		String sql = "SELECT c.customer_id, c.first_name, c.last_name, c.email, active,c.create_date,(SELECT address FROM address WHERE address_id = (SELECT address_id FROM store WHERE store_id = c.store_id)) store_address,a.address,a.district, (SELECT city FROM city WHERE city_id = a.city_id) city, postal_code, phone FROM customer c INNER JOIN address a ON c.address_id=a.address_id WHERE c.customer_id=?";
+		String sql2 = "SELECT title, rental_rate, rental_date, return_date FROM rental INNER JOIN film f ON f.film_id = (SELECT film_id FROM inventory WHERE inventory_id = rental.inventory_id) WHERE customer_id=? ORDER BY rental_date DESC";
+
 		try{
 			conn = DBHelper.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt2 = conn.prepareStatement(sql);
+			stmt.setInt(1,customerId);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				customerDetail.setCustomer(new Customer());
+				customerDetail.getCustomer().setCustomerId(rs.getInt("c.customer_id"));
+				customerDetail.getCustomer().setFirstName(rs.getString("c.first_name"));
+				customerDetail.getCustomer().setLastName(rs.getString("c.last_name"));
+				customerDetail.getCustomer().setEmail(rs.getString("c.email"));
+				customerDetail.getCustomer().setActive(rs.getInt("active"));
+				
+				customerDetail.setStore_address(rs.getString("store_address"));
+				
+				customerDetail.setAddress(new Address());
+				customerDetail.getAddress().setAddress(rs.getString("a.address"));
+				customerDetail.getAddress().setDistrict(rs.getString("a.district"));
+				customerDetail.getAddress().setCity(new City());
+				customerDetail.getAddress().getCity().setCity(rs.getString("city"));
+				customerDetail.getAddress().setPosalCode(rs.getString("postal_code"));
+				customerDetail.getAddress().setPhone(rs.getString("phone"));
+			}
+			stmt2 = conn.prepareStatement(sql2);
+			stmt2.setInt(1,customerId);
+			rs2 = stmt2.executeQuery();
+			List<Rental> listRental = new ArrayList<>();
+			while(rs2.next()) {
+				Rental rental = new Rental();
+				rental.setRentalDate(rs2.getString("rental_date"));
+				rental.setRentalRate(rs2.getDouble("rental_rate"));
+				rental.setReturnDate(rs2.getString("return_date"));
+				rental.setTitle(rs2.getString("title"));
+				listRental.add(rental);
+			}
+			customerDetail.setListRental(listRental);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBHelper.close(null,stmt, conn);
+			DBHelper.close(rs,stmt, conn);
 		}
+		return customerDetail;
 	}
+	
 }

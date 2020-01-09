@@ -98,7 +98,6 @@
 											<th>이름</th>
 											<th>성</th>
 											<th>email</th>
-											<th>주소ID</th>
 											<th>active</th>
 											<th>생성일</th>
 										</tr>
@@ -180,11 +179,10 @@
 			//console.log(json);
 			for(i=0;i<json.length;i+=1){
 				let html = "";
-				html += "<tr><td>"+json[i].storeId+"</td>"
+				html += "<tr onclick='location.href=\"customerInfo.html?customerId="+json[i].customerId+"\"'><td>"+json[i].storeId+"</td>"
 				+"<td>"+json[i].firstName+"</td>"
 				+"<td>"+json[i].lastName+"</td>"
 				+"<td>"+json[i].email+"</td>"
-				+"<td>"+json[i].address.addressId+"</td>"
 				+"<td>"+json[i].active+"</td>"
 				+"<td>"+json[i].createDate+"</td>"
 				+"</tr>";
@@ -205,11 +203,10 @@
 					//console.log(json);
 					for(i=0;i<json.length;i+=1){
 						let html = "";
-						html += "<tr><td>"+json[i].storeId+"</td>"
+						html += "<tr onclick='location.href=\"customerInfo.html?customerId="+json[i].customerId+"\"'><td>"+json[i].storeId+"</td>"
 						+"<td>"+json[i].firstName+"</td>"
 						+"<td>"+json[i].lastName+"</td>"
 						+"<td>"+json[i].email+"</td>"
-						+"<td>"+json[i].address.addressId+"</td>"
 						+"<td>"+json[i].active+"</td>"
 						+"<td>"+json[i].createDate+"</td>"
 						+"</tr>";

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 	#content {
-		padding-top: 100px;
+		padding-top: 50px;
 	}
 	
 </style>
@@ -178,94 +178,7 @@
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
-
-              <!-- Project Card Example -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                  <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Color System -->
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-lg-6 mb-4">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-4">
+            	<div class="card shadow mb-4">
 				<div class="card-header py-3">
 					<h6 class="m-0 font-weight-bold text-primary">sakila database table 정보</h6>
 				</div>
@@ -339,6 +252,91 @@
 							<tr>
 								<td>filmText</td>
 								<td><span id = "filmTextRow"></span></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			</div>
+
+            <div class="col-lg-6 mb-4">
+
+              <!-- Illustrations -->
+              <div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">카테고리별 수익 정보</h6>
+				</div>
+				<div class="card-body">
+					<table class="table">
+						<thead>
+							<th>카테고리</th>
+							<th>수익($)</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Sports</td>
+								<td><span id = "Sports"></span></td>
+							</tr>
+							<tr>
+								<td>Sci-Fi</td>
+								<td><span id = "Sci-Fi"></span></td>
+							</tr>
+							<tr>
+								<td>Animation</td>
+								<td><span id = "Animation"></span></td>
+							</tr>
+							<tr>
+								<td>Drama</td>
+								<td><span id = "Drama"></span></td>
+							</tr>
+							<tr>
+								<td>Comedy</td>
+								<td><span id = "Comedy"></span></td>
+							</tr>
+							<tr>
+								<td>Action</td>
+								<td><span id = "Action"></span></td>
+							</tr>
+							<tr>
+								<td>New</td>
+								<td><span id = "New"></span></td>
+							</tr>
+							<tr>
+								<td>Games</td>
+								<td><span id = "Games"></span></td>
+							</tr>
+							<tr>
+								<td>Foreign</td>
+								<td><span id = "Foreign"></span></td>
+							</tr>
+							<tr>
+								<td>Family</td>
+								<td><span id = "Family"></span></td>
+							</tr>
+							<tr>
+								<td>Documentary</td>
+								<td><span id = "Documentary"></span></td>
+							</tr>
+							<tr>
+								<td>Horror</td>
+								<td><span id = "Horror"></span></td>
+							</tr>
+							<tr>
+								<td>Children</td>
+								<td><span id = "Children"></span></td>
+							</tr>
+							<tr>
+								<td>Classics</td>
+								<td><span id = "Classics"></span></td>
+							</tr>
+							<tr>
+								<td>Travel</td>
+								<td><span id = "Travel"></span></td>
+							</tr>
+							<tr>
+								<td>Music</td>
+								<td><span id = "Music"></span></td>
 							</tr>
 							
 						</tbody>
@@ -430,6 +428,29 @@
 			$("#filmActorRow").text(json.filmActorRow);
 			$("#inventoryRow").text(json.inventoryRow);
 			$("#filmTextRow").text(json.filmTextRow);
+		}
+	});
+	$.ajax({
+		url : "/sakila/salesByCategoryController",
+		method : "POST",
+		success : function(json){
+			console.log(json);
+			$("#Sports").text(json.Sports);
+			$("#Sci-Fi").text(json["Sci-Fi"]);
+			$("#Animation").text(json.Animation);
+			$("#Drama" ).text(json.Drama);
+			$("#Comedy").text(json.Comedy);
+			$("#Action").text(json.Action);
+			$("#New").text(json.New);
+			$("#Games").text(json.Games);
+			$("#Foreign").text(json.Foreign);
+			$("#Family").text(json.Family);
+			$("#Documentary").text(json.Documentary);
+			$("#Horror").text(json.Horror);
+			$("#Children").text(json.Children);
+			$("#Classics").text(json.Classics);
+			$("#Travel").text(json.Travel);
+			$("#Music").text(json.Music);
 		}
 	});
 	$.ajax({
